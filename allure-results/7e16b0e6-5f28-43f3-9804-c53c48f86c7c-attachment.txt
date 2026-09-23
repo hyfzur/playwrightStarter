@@ -1,0 +1,2 @@
+Opening Playwright documentation to verify the Get started link.
+Get started link opened the Installation page.

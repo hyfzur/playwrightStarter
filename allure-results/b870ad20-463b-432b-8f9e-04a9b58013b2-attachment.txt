@@ -1,0 +1,6 @@
+Starting login test setup.
+Opening the Sauce Demo login page.
+Testing login with a locked-out user.
+Attempting login for user: locked_out_user.
+Login form submitted for user: locked_out_user.
+Locked-out user displayed the expected error.

@@ -1,0 +1,6 @@
+Starting login test setup.
+Opening the Sauce Demo login page.
+Testing login with valid credentials.
+Attempting login for user: standard_user.
+Login form submitted for user: standard_user.
+Valid login opened the inventory dashboard.

@@ -1,0 +1,4 @@
+Opening the Sauce Demo login page.
+Attempting login for user: standard_user.
+Login form submitted for user: standard_user.
+Selecting 3 item(s) from 0 available item(s).
