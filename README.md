@@ -81,7 +81,7 @@ npx playwright show-report
 
 ## Allure reporting
 
-This setup generates both standard Playwright HTML output and Allure output. The `allure-playwright` reporter writes result files into `allure-results`, and the `allure:report` script converts them into a browsable report under `allure-report`.
+This setup generates both standard Playwright HTML reports and Allure reports. The default `allure:report` command keeps the standard generation flow and is compatible with CI usage.
 
 ## Test structure
 
