@@ -9,21 +9,35 @@ test('selected items are shown in the cart', async ({page}) => {
 	const shoppingCartPage = new ShoppingCartPage(page);
 
 	await homePage.goto();
-	await homePage.login('standard_user', 'secret_sauce');
+	await test.step('Log in with valid credentials', async () => {
+		await homePage.login('standard_user', 'secret_sauce');
+	});
 
 	// Capture the expected item names and subtotal while adding the requested items.
-	const selectedItems = await dashboardPage.addItemsToCart(3);
-	await dashboardPage.gotoCart();
+	const selectedItems = await test.step('Add three products to the cart', async () => {
+		return dashboardPage.addItemsToCart(3);
+	});
+	await test.step('Open the shopping cart', async () => {
+		await dashboardPage.gotoCart();
+	});
 
 	// Read the cart independently, then validate both names and subtotal.
-	const cartItemNames = await shoppingCartPage.getCartItemNames();
-	const cartTotalCost = await shoppingCartPage.getCartTotalCost();
+	const cartItemNames = await test.step('Read the products shown in the cart', async () => {
+		return shoppingCartPage.getCartItemNames();
+	});
+	const cartTotalCost = await test.step('Read the cart subtotal', async () => {
+		return shoppingCartPage.getCartTotalCost();
+	});
 
 	console.log(`Expected item names: ${selectedItems.names.join(', ')}.`);
 	console.log(`Expected subtotal: $${selectedItems.totalCost.toFixed(2)}.`);
 	console.log(`Comparing cart subtotal $${cartTotalCost.toFixed(2)} with expected subtotal.`);
 
-	expect(cartItemNames).toEqual(selectedItems.names);
-	expect(cartTotalCost).toBe(selectedItems.totalCost);
+	await test.step('Verify the selected products are shown in the cart', async () => {
+		expect(cartItemNames, 'Cart product names').toEqual(selectedItems.names);
+	});
+	await test.step('Verify the cart subtotal matches the selected products', async () => {
+		expect(cartTotalCost, 'Cart subtotal').toBe(selectedItems.totalCost);
+	});
 });
 

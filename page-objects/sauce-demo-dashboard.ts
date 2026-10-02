@@ -1,4 +1,4 @@
-import {type Locator, type Page} from '@playwright/test';
+import {expect, type Locator, type Page} from '@playwright/test';
 
 export type SelectedItems = {
     names: string[];
@@ -35,14 +35,16 @@ export class SauceDemoDashboardPage {
     }
 
     async addItemsToCart(count: number): Promise<SelectedItems> {
+        await this.inventoryItems.first().waitFor({state: 'visible'});
         const availableItemCount = await this.inventoryItems.count();
 
         console.log(`Selecting ${count} item(s) from ${availableItemCount} available item(s).`);
 
         // Reject invalid requests before interacting with the inventory.
-        if (!Number.isInteger(count) || count < 1 || count > availableItemCount) {
+        if (!Number.isInteger(count) || count < 1) {
             throw new RangeError(`Item count must be an integer between 1 and ${availableItemCount}.`);
         }
+        await expect(availableItemCount, 'available inventory items').toBeGreaterThanOrEqual(count);
 
         const selectedItemNames: string[] = [];
         let selectedItemsTotal = 0;

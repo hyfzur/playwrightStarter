@@ -49,6 +49,18 @@ Run the full Playwright suite:
 npm test
 ```
 
+Run the suite with Allure output enabled:
+
+```bash
+npm run test:allure
+```
+
+Generate and open the Allure report:
+
+```bash
+npm run allure:report
+```
+
 Run a specific test file:
 
 ```bash
@@ -66,6 +78,10 @@ Open the HTML report:
 ```bash
 npx playwright show-report
 ```
+
+## Allure reporting
+
+This setup generates both standard Playwright HTML reports and Allure reports. The default `allure:report` command keeps the standard generation flow and is compatible with CI usage.
 
 ## Test structure
 

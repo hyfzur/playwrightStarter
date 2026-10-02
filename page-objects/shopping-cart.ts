@@ -32,6 +32,7 @@ export class ShoppingCartPage {
     }
 
     async getCartItemNames() {
+        await this.cartItems.first().waitFor({state: 'visible'});
         const itemNames = [];
         const itemCount = await this.cartItems.count();
 
@@ -47,6 +48,7 @@ export class ShoppingCartPage {
     }
 
     async getCartTotalCost(): Promise<number> {
+        await this.cartItems.first().waitFor({state: 'visible'});
         const itemCount = await this.cartItems.count();
         let cartTotal = 0;
 
