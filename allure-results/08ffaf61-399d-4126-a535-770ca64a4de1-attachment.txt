@@ -1,0 +1,2 @@
+Opening Playwright documentation to verify the page title.
+Playwright page title matched the expected text.

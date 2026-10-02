@@ -1,0 +1,6 @@
+Starting login test setup.
+Opening the Sauce Demo login page.
+Testing logout after a successful login.
+Attempting login for user: standard_user.
+Login form submitted for user: standard_user.
+Logout returned to the login page.
